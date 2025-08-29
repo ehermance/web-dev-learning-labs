@@ -2,12 +2,13 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  color: string;
   onClose: () => void;
 }
 
-const Alert = ({ children, onClose }: Props) => {
+const Alert = ({ children, color = "primary", onClose }: Props) => {
   return (
-    <div className="alert alert-primary alert-dismissible">
+    <div className={"alert alert-dismissible alert-" + color}>
       {children}
       <button
         type="button"
