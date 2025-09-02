@@ -9,9 +9,11 @@ const App = () => {
     password: "",
     firstName: "",
   });
-  const [count, setCount] = useState(() =>
-    JSON.parse(localStorage.getItem("count"))
-  );
+  const defaultCount = () => {
+    const storedData = JSON.parse(localStorage.getItem("count"));
+    return storedData ? storedData : 0;
+  };
+  const [count, setCount] = useState(defaultCount);
   const { data, loading } = useFetch(`http://numbersapi.com/${count}/trivia`);
 
   useEffect(() => {
